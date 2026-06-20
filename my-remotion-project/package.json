@@ -17,6 +17,7 @@
     "remotion": "^4.0.481"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.481",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "ts-loader": "^9.6.1",
