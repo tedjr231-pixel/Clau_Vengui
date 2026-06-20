@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-Cola TikTok Ad - Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        .title {
+            color: #DC143C;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .subtitle {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+            aspect-ratio: 9/16;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(220, 20, 60, 0.3);
+            border: 2px solid #DC143C;
+        }
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeInOut 6s ease-in-out forwards;
+            text-align: center;
+            color: #fff;
+        }
+        .scene:nth-child(1) { animation-delay: 0s; background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%); }
+        .scene:nth-child(2) { animation-delay: 6s; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); }
+        .scene:nth-child(3) { animation-delay: 12s; background: linear-gradient(135deg, #DC143C 0%, #FF6B6B 100%); }
+        .scene:nth-child(4) { animation-delay: 18s; background: linear-gradient(135deg, #8b0000 0%, #DC143C 100%); }
+        .scene:nth-child(5) { animation-delay: 24s; background: linear-gradient(135deg, #DC143C 0%, #FF1744 100%); }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .logo { font-size: 60px; margin-bottom: 10px; }
+        .logo-text { font-size: 48px; font-weight: bold; letter-spacing: 3px; }
+
+        .bottle {
+            position: relative;
+            width: 60px;
+            height: 140px;
+            animation: spin 3s linear, pulse 1s ease-in-out;
+        }
+        .bottle-neck { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 20px; height: 15px; background: #DC143C; border-radius: 0 0 6px 6px; }
+        .bottle-body { position: absolute; top: 15px; left: 50%; transform: translateX(-50%); width: 55px; height: 110px; background: #DC143C; border-radius: 12px 12px 15px 15px; box-shadow: 0 0 25px rgba(220, 20, 60, 0.6); }
+        .bottle-shine { position: absolute; top: 25px; left: 57%; width: 10px; height: 80px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); border-radius: 50%; }
+
+        @keyframes spin { 0% { transform: rotateZ(0deg); } 100% { transform: rotateZ(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        .text-main {
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: bounce 0.6s ease-out;
+        }
+        .text-sub { font-size: 20px; margin-top: 15px; opacity: 0.9; }
+
+        @keyframes bounce {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1.1); }
+        }
+
+        .bubbles { position: relative; width: 100%; height: 100%; }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(220,20,60,0.3));
+            border: 2px solid rgba(255,255,255,0.4);
+            animation: float-up 3s ease-out forwards;
+        }
+        .bubble:nth-child(1) { width: 30px; height: 30px; left: 15%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 25px; height: 25px; left: 25%; animation-delay: 0.3s; }
+        .bubble:nth-child(3) { width: 35px; height: 35px; left: 35%; animation-delay: 0.6s; }
+        .bubble:nth-child(4) { width: 20px; height: 20px; left: 45%; animation-delay: 0.9s; }
+        .bubble:nth-child(5) { width: 30px; height: 30px; left: 55%; animation-delay: 1.2s; }
+        .bubble:nth-child(6) { width: 25px; height: 25px; left: 65%; animation-delay: 1.5s; }
+        .bubble:nth-child(7) { width: 28px; height: 28px; left: 75%; animation-delay: 1.8s; }
+        .bubble:nth-child(8) { width: 32px; height: 32px; left: 85%; animation-delay: 2.1s; }
+
+        @keyframes float-up {
+            0% { bottom: 0; opacity: 1; transform: scale(1); }
+            100% { bottom: 120%; opacity: 0; transform: scale(0); }
+        }
+
+        .cta-box {
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 3px solid #fff;
+            animation: scale-in 0.5s ease-out;
+        }
+        .cta-box h1 { font-size: 36px; margin: 0 0 8px 0; }
+        .cta-box p { font-size: 18px; margin: 5px 0; }
+
+        @keyframes scale-in {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .info {
+            margin-top: 30px;
+            background: rgba(220, 20, 60, 0.1);
+            border-left: 4px solid #DC143C;
+            padding: 15px;
+            border-radius: 8px;
+            color: #fff;
+        }
+        .info h3 { color: #DC143C; margin-bottom: 10px; }
+        .info p { font-size: 14px; line-height: 1.6; opacity: 0.9; }
+        .info strong { color: #DC143C; }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background: #DC143C;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #FF1744;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">🎬 COCA-COLA</div>
+        <div class="subtitle">Anúncio TikTok - 30 Segundos</div>
+
+        <div class="video-container">
+            <!-- Cena 1: Intro -->
+            <div class="scene">
+                <div class="logo">🔴</div>
+                <div class="logo-text">COCA-COLA</div>
+            </div>
+
+            <!-- Cena 2: Garrafa -->
+            <div class="scene">
+                <div class="bottle">
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"></div>
+                    <div class="bottle-shine"></div>
+                </div>
+            </div>
+
+            <!-- Cena 3: Texto -->
+            <div class="scene">
+                <div class="text-main">ABRA A<br>FELICIDADE</div>
+                <div class="text-sub">✨ REFRESCANTE ✨</div>
+            </div>
+
+            <!-- Cena 4: Bolhas -->
+            <div class="scene">
+                <div class="bubbles">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                </div>
+                <div style="position: absolute; bottom: 50px; font-size: 36px; font-weight: bold; letter-spacing: 2px;">PURA ENERGIA!</div>
+            </div>
+
+            <!-- Cena 5: CTA -->
+            <div class="scene">
+                <div class="cta-box">
+                    <h1>COCA-COLA</h1>
+                    <p>Taste the Feeling</p>
+                    <p style="font-size: 16px;">🎉 Disponível em todo lugar!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="location.reload()">🔄 Repetir Animação</button>
+        </div>
+
+        <div class="info">
+            <h3>📱 Especificações</h3>
+            <p><strong>Formato:</strong> Vertical (9:16 - TikTok)<br>
+            <strong>Dimensões:</strong> 540x960 pixels<br>
+            <strong>Duração:</strong> 30 segundos<br>
+            <strong>Taxa de Quadros:</strong> 30 FPS<br>
+            <strong>Tecnologia:</strong> Remotion + React</p>
+        </div>
+
+        <div class="info">
+            <h3>✨ Características</h3>
+            <p>✅ 5 cenas dinamicamente animadas<br>
+            ✅ Transições suaves e profissionais<br>
+            ✅ Animações síncronizadas com easing<br>
+            ✅ Cores vibrantes da marca<br>
+            ✅ Call-to-action convincente<br>
+            ✅ Otimizado para redes sociais</p>
+        </div>
+    </div>
+</body>
+</html>
